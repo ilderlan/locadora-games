@@ -1,0 +1,62 @@
+<h1>Cadastro de Funcionario</h1>
+
+<form action="<?php echo $this->baseUrl('funcionario/gravar'); ?>" method="post" enctype="multipart/form-data">
+	<input type="hidden" name="id_funcionario" value="<?php echo $this->row['id_funcionario']; ?>" />
+	
+	<div class="form-group">
+	    <label for="nome">Nome</label>
+	    <input type="text" class="form-control" id="nome" name="nome" value="<?php echo $this->row['nome']; ?>">
+	</div>
+	
+	<div class="form-group">
+	    <label for="cpf">CPF</label>
+	    <input type="text" class="form-control" id="cpf" name="cpf" value="<?php echo $this->row['cpf']; ?>">
+	</div>
+	
+	<div class="form-group">
+	    <label for="telefone1">Telefone 1</label>
+	    <input type="text" class="form-control" id="telefone1" name="tel_contato_1" value="<?php echo $this->row['tel_contato_1']; ?>">
+	</div>
+	
+	<div class="form-group">
+	    <label for="telefone2">Telefone 2</label>
+	    <input type="text" class="form-control" id="telefone2" name="tel_contato_2" value="<?php echo $this->row['tel_contato_2']; ?>">
+	</div>
+	
+	<div class="form-group">
+	    <label for="email">E-mail</label>
+	    <input type="text" class="form-control" id="email" name="email" value="<?php echo $this->row['email']; ?>">
+	</div>
+	<?php if(!empty($_SESSION['id_perfil']) && $_SESSION['id_perfil'] == 2){?>
+		<div class="form-group">
+		    <label for="perfil">Perfil</label>
+	    	<select class="form-control" id="id_perfil" name="id_perfil">
+	    		<option value="">Selecione</option>
+	    		<?php foreach($this->rowSetPerfil as $rowPerfil){ ?>
+	    			<option <?php echo $this->row['id_perfil'] == $rowPerfil['id_perfil'] ? 'selected="selected"' : ''; ?> value="<?php echo $rowPerfil['id_perfil']; ?>"><?php echo $rowPerfil['nome']; ?></option>
+	    		<?php } ?>
+	    	</select>
+		</div>
+	<?php }?>
+	<div class="form-group required">
+	    <label for="login">Login</label>
+	    <input type="text" class="form-control" id="login" name="login" required="required" value="<?php echo $this->row['login']; ?>">
+	</div>
+	<div class="form-group" id="resultado">
+	</div>
+	
+	<div class="form-group required">
+	    <label for="senha">Senha</label>
+	    <input type="password" class="form-control" id="senha"  required="required" name="senha" value="<?php echo $this->row['senha']; ?>">
+	</div>
+    
+    <div class="form-group">
+	    <label for="foto">Foto</label>
+	    <input type="file" class="form-control" id="foto" name="foto" value="<?php echo $this->row['foto']; ?>">
+	</div>
+	
+	<div class="text-center" >
+		<input type="submit" value="Enviar" class="btn btn-success" />
+		<a href="<?php echo $this->baseUrl('usuario/index'); ?>" class="btn btn-danger" >Voltar</a>
+	</div>
+</form>

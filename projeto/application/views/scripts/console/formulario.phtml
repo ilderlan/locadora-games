@@ -1,0 +1,16 @@
+ <h1>Cadastro de Console</h1>
+ 
+ <form action="<?php echo $this->baseUrl('console/gravar')?>" method="post" enctype="multipart/form-data">
+    <input type="hidden" name="id_console" value="<?php echo $this->row['id_console'] ?>"/>
+    
+    <div class="form-group">
+	    <label for="nome_console">Nome</label>
+	    <input type="text" required="required" name="nome_console" id="nome_console" value="<?php echo $this->row['nome_console']?>"> 
+    </div>
+    
+    <div>
+		<input type="submit" value="Enviar" class="btn btn-success" />
+		<a href="<?php echo $this->baseUrl('console/index'); ?>" class="btn btn-danger" >Voltar</a>
+	</div>
+
+ </form>

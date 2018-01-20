@@ -1,0 +1,37 @@
+﻿<h1>Listagem de Funcionarios</h1>
+<?php if(!empty($_SESSION['id_perfil']) && $_SESSION['id_perfil'] == 2){?>
+	<div class="form-group">
+		<a href="<?php echo $this->baseUrl('funcionario/formulario'); ?>" class="btn btn-default">Inserir</a>
+	</div>
+<?php }?>
+<table border="1" width="100%" class="table table-inverse">
+	<thead>
+		<tr>
+			<th>Ações</th>
+			<th>Matrícula</th>
+			<th>Nome</th>
+			<th>CPF</th>
+			<th>Telefone 1</th>
+			<th>Telefone 2</th>
+			<th>E-mail</th>
+			<th>Login</th>
+		</tr>
+	</thead>
+	<?php foreach($this->rowSet as $row){ ?>
+	<tbody>
+		<tr>
+			<td class="btn">
+				<a href="<?php echo $this->baseUrl('funcionario/formulario/id_funcionario/' . $row['id_funcionario']); ?>" class="btn btn-primary" wid>Alterar</a>
+				<a href="<?php echo $this->baseUrl('funcionario/excluir/id_funcionario/' . $row['id_funcionario']); ?>" class="btn btn-danger" >Excluir</a>
+			</td>
+			<td><?php echo $row['id_funcionario']; ?></td>
+			<td><?php echo $row['nome']; ?></td>
+			<td><?php echo $row['cpf']; ?></td>
+			<td><?php echo $row['tel_contato_1']; ?></td>
+			<td><?php echo $row['tel_contato_2']; ?></td>
+			<td><?php echo $row['email']; ?></td>
+			<td><?php echo $row['login']; ?></td>
+		</tr>
+	</tbody>
+	<?php } ?>
+</table>

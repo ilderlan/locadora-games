@@ -1,0 +1,32 @@
+<h1>Login</h1>
+
+<?php if(!empty($_SESSION['mensagem'])){
+
+    
+    echo '<div class="alert alert-warning"><strong>Atenção! ';
+    echo $_SESSION['mensagem'];
+    echo '</strong> </div>';
+    unset($_SESSION['mensagem']);
+
+}?>
+
+<form action="<?php echo $this->baseUrl('funcionario/autenticar'); ?>" method="post" enctype="multipart/form-data">
+	<input type="hidden" name="id_funcionario" value="<?php echo $this->row['id_funcionario']; ?>" />
+	
+
+
+	<div class="form-group">
+	    <label for="email">Nome de Usuário</label>
+	    <input type="text" class="form-control" id="login" name="login" value="<?php echo $this->row['login']; ?>">
+	</div>
+	
+	<div class="form-group">
+	    <label for="senha">Senha</label>
+	    <input type="password" class="form-control" id="senha" name="senha" value="<?php echo $this->row['senha']; ?>">
+	</div>
+    
+	<div class="text-center">
+		<input type="submit" value="Enviar" class="btn btn-success" />
+		<a href="<?php echo $this->baseUrl('funcionario/index'); ?>" class="btn btn-danger" >Voltar</a>
+	</div>
+</form>

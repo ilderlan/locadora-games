@@ -1,0 +1,36 @@
+<h1>Listagem das Locações</h1>
+
+<div class="form-group">
+	<a href="<?php echo $this->baseUrl('locacao/formulario'); ?>" class="btn btn-default">Inserir</a>
+</div>
+
+<table border="1" width="100%" class="table table-inverse">
+	<thead>
+		<tr>
+			<th>Ações</th>
+			<th>Cliente</th>
+			<th>Data da Devolução</th>
+			<th>Game</th>
+			<th>Valor da Locação</th>
+		</tr>
+	</thead>
+	<?php foreach($this->rowSet as $row){ ?>
+	<?php 
+		$dia = substr($row['dt_devolucao'], 8, 2);
+		$mes = substr($row['dt_devolucao'], 5, 2);
+		$ano = substr($row['dt_devolucao'], 0, 4);
+	?>
+	<tbody>
+		<tr>
+			<td class="btn">
+				<a href="<?php echo $this->baseUrl('locacao/formulario/id_locacao/' . $row['id_locacao']); ?>" class="btn btn-primary" wid>Alterar</a>
+				<a href="<?php echo $this->baseUrl('locacao/excluir/id_locacao/' . $row['id_locacao']); ?>"class="btn btn-danger" >Excluir</a>
+			</td>
+			<td><?php echo $row['cliente']; ?></td>
+			<td><?php echo $dia . '/' . $mes . '/' . $ano; ?></td>
+			<td><?php echo $row['game']?>	
+			<td><?php echo $row['valor']; ?></td>
+		</tr>
+	</tbody>
+	<?php } ?>
+</table>

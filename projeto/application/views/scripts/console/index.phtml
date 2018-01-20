@@ -1,0 +1,27 @@
+<h1> Listagem de Consoles</h1>
+<div class="form-group">
+	<a href="<?php echo $this->baseUrl('console/formulario'); ?>" class="btn btn-default">Inserir</a>
+</div>
+
+<table border="1" width="100%" class="table table-inverse">    
+	<thead>
+	    <tr>
+	        <th>Acoes</th>
+	        <th>Nome</th>
+	    </tr>
+    </thead>
+    
+    <?php foreach($this->rowSet as $row){ ?>
+    <tbody>
+	    <tr>
+	        <td class="col-md-3">
+	        <a href="<?php echo $this->baseUrl('console/formulario/id_console/' . $row['id_console']); ?>" class="btn btn-primary">Alterar</a> 
+	        <a href="<?php echo $this->baseUrl('console/excluir/id_console/' . $row['id_console']); ?>" class="btn btn-danger">Excluir </a>
+	        </td>
+	        <td><?php echo $row['nome_console'] ?></td>
+	    </tr>
+    </tbody>
+    <?php } ?>
+</table>
+
+

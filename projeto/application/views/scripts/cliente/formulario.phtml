@@ -1,0 +1,82 @@
+<h1>Cadastro de Clientes</h1>
+
+<form action="<?php echo $this->baseUrl('cliente/gravar'); ?>" method="post" enctype="multipart/form-data">
+	<input type="hidden" name="id_cliente" value="<?php echo $this->row['id_cliente']; ?>" />
+	
+	<div class="form-group">
+	    <label for="cpf">CPF</label>
+	    <input type="text" class="form-control" id="cpf" name="cpf" value="<?php echo $this->row['cpf']; ?>">
+	</div>
+	
+	<div class="form-group">
+	    <label for="nome">Nome</label>
+	    <input type="text" class="form-control" id="nome" name="nome_cliente" value="<?php echo $this->row['nome_cliente']; ?>">
+	</div>
+	
+	<div class="form-group">
+	    <label for="dt_nascimento">Data de Nascimento</label>
+	    <input type="date" class="form-control" id="dt_nascimento" name="dt_nascimento" value="<?php echo $this->row['dt_nascimento']; ?>" >
+	</div>
+	
+	<div class="form-group">
+	    <label for="tel_celular">Telefone Celular</label>
+	    <input type="text" class="form-control" id="tel_celular" name="tel_celular" value="<?php echo $this->row['tel_celular']; ?>">
+	</div>
+	
+	<div class="form-group">
+	    <label for="tel_fixo">Telefone Fixo</label>
+	    <input type="text" class="form-control" id="tel_fixo" name="tel_fixo" value="<?php echo $this->row['tel_fixo']; ?>">
+	</div>
+	
+	<div class="form-group">
+	    <label for="email">E-mail</label>
+	    <input type="email" class="form-control" id="email" name="email" value="<?php echo $this->row['email']; ?>">
+	</div>
+	
+	<div class="form-group">
+	    <label for="uf">Uf</label>
+    	<select class="form-control" id="id_uf" name="id_uf">
+    		<option value="">Selecione</option>
+    		<?php foreach($this->rowSetUf as $rowUf){ ?>
+    			<option <?php echo $this->row['id_uf'] == $rowUf['id_uf'] ? 'selected="selected"' : ''; ?> value="<?php echo $rowUf['id_uf']; ?>"><?php echo $rowUf['nome']; ?></option>
+    		<?php } ?>
+    	</select>
+	</div>
+    
+    <div class="form-group">
+	    <label for="municipio">Municipio</label>
+        <div id="div_municipios">        
+    	   <select class="form-control" id="id_municipio" name="id_municipio">
+    		  <option value="">Selecione</option>
+    		      <?php foreach($this->rowSetMunicipio as $rowMunicipio){ ?>
+                <option <?php echo $this->row['id_municipio'] == $rowMunicipio['id_municipio'] ? 'selected="selected"' : ''; ?> value="<?php echo $rowMunicipio['id_municipio']; ?>"><?php echo $rowMunicipio['nome']; ?></option>
+    		      <?php } ?>
+    	   </select>
+        </div>
+	</div>
+	
+	<div class="form-group">
+	    <label for="cep">CEP</label>
+	    <input type="text" class="form-control" id="cep" name="cep" value="<?php echo $this->row['cep']; ?>">
+	</div>
+	
+	<div class="form-group">
+	    <label for="logradouro">Logradouro</label>
+	    <input type="text" class="form-control maiuscula" id="logradouro" style="^text-transform: uppercase;" name="logradouro" value="<?php echo $this->row['logradouro']; ?>">
+	</div>
+		
+	<div class="text-center">
+		<input type="submit" value="Enviar" class="btn btn-success" />
+		<a href="<?php echo $this->baseUrl('cliente/index'); ?>" class="btn btn-danger" >Voltar</a>
+	</div>
+</form>
+<script>
+
+    $(function(){  
+          
+        $('#id_uf').change(function(){
+            $('#div_municipios').load('<?php echo $this->baseUrl('cliente/carregar-municipio/id_uf/'); ?>'+ $('#id_uf').val());
+        });
+    });
+
+</script>

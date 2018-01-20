@@ -1,0 +1,6 @@
+<select class="form-control" id="id_municipio" name="id_municipio">
+    		  <option value="">Selecione</option>
+    		      <?php foreach($this->rowSetMunicipio as $rowMunicipio){ ?>
+                <option <?php echo $this->row['id_municipio'] == $rowMunicipio['id_municipio'] ? 'selected="selected"' : ''; ?> value="<?php echo $rowMunicipio['id_municipio']; ?>"><?php echo $rowMunicipio['nome']; ?></option>
+    		      <?php } ?>
+</select>

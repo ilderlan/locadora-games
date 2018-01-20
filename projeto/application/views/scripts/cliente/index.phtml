@@ -1,0 +1,44 @@
+<h1>Listagem de Clientes</h1>
+
+<div class="form-group">
+	<a href="<?php echo $this->baseUrl('cliente/formulario'); ?>" class="btn btn-default">Inserir</a>
+</div>
+
+<table id="tabela-cliente" border="1" width="100%" class="table table-inverse">
+	<thead>
+		<tr>			
+			<th>Ações</th>
+			<th>Nome</th>
+			<th>CPF</th>
+			<th>Data de Nascimento</th>
+			<th>E-mail</th>
+			<th>Telefone Celular</th>
+			<th>Telefone Fixo</th>
+			<th>Estado</th>
+			<th>CEP</th>
+		</tr>
+	</thead>
+	<?php foreach($this->rowSet as $row){ ?>
+	<?php 
+		$dia = substr($row['dt_nascimento'], 8, 2);
+		$mes = substr($row['dt_nascimento'], 5, 2);
+		$ano = substr($row['dt_nascimento'], 0, 4);
+	?>
+	<tbody>
+		<tr>
+			<td class="btn">
+				<a href="<?php echo $this->baseUrl('cliente/formulario/id_cliente/' . $row['id_cliente']); ?>" class="btn btn-primary" wid>Alterar</a>
+				<a href="<?php echo $this->baseUrl('cliente/excluir/id_cliente/' . $row['id_cliente']); ?>"class="btn btn-danger" >Excluir</a>
+			</td>
+			<td><?php echo $row['nome_cliente']; ?></td>
+			<td><?php echo $row['cpf']; ?></td>
+			<td><?php echo $dia . '/' . $mes . '/' . $ano; ?></td>
+			<td><?php echo $row['email']; ?></td>
+			<td><?php echo $row['tel_celular']?>	
+			<td><?php echo $row['tel_fixo']?>	
+			<td><?php echo $row['id_uf']?>	
+			<td><?php echo $row['cep']?>			
+		</tr>
+	</tbody>
+	<?php } ?>
+</table>

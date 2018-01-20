@@ -1,0 +1,43 @@
+﻿<h1>Listagem de Games</h1>
+
+<div class="form-group">
+	<a href="<?php echo $this->baseUrl('game/formulario'); ?>" class="btn btn-default">Inserir</a>
+</div>
+
+<table border="1" width="100%" class="table table-inverse">
+	<thead>
+		<tr>
+			<th>Ações</th>
+			<th>Nome</th>
+			<th>Quantidade</th>
+			<th>Disponibilidade</th>
+			<th>Console</th>
+			<th>Genero</th>
+			<th>Descrição</th>
+			<th>Foto</th>
+		</tr>
+	</thead>
+
+	<?php foreach($this->rowSet as $row){ ?>
+	
+	<tbody>
+		<tr>
+			<td class="btn">
+				<a href="<?php echo $this->baseUrl('game/formulario/id_game/' . $row['id_game']); ?>" class="btn btn-primary" wid>Alterar</a>
+				<a href="<?php echo $this->baseUrl('game/excluir/id_game/' . $row['id_game']); ?>"class="btn btn-danger" >Excluir</a>
+			</td>
+			<td class="col-md-2"><?php echo $row['nome_game']; ?></td>
+			<td><?php echo $row['quantidade']; ?></td>
+			<?php if(!empty($row['disponibilidade']) && $row['quantidade'] > 0) {?>
+				<td><?php echo 'Disponivel'; ?></td>
+			<?php }else {?>
+				<td><?php echo 'Indisponivel'; ?></td>
+				<?php }?>
+			<td><?php echo $row['console']; ?></td>
+			<td><?php echo $row['genero']; ?></td>
+			<td><?php echo $row['descricao_game']; ?></td>
+			<td><img src="<?php echo $this->baseUrl('img/fotos/' . $row['foto']); ?>" width="60px" height="60px"/></a></li> </td>
+		</tr>
+	</tbody>
+	<?php } ?>
+</table>

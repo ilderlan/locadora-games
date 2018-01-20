@@ -1,0 +1,6 @@
+<select class="form-control" id="id_game" name="id_game">
+    		  <option value="">Selecione</option>
+    		      <?php foreach($this->rowSetGame as $rowGame){ ?>
+                <option <?php echo $this->row['id_game'] == $rowGame['id_game'] ? 'selected="selected"' : ''; ?> value="<?php echo $rowGame['id_game']; ?>"><?php echo $rowGame['nome_game']; ?></option>
+    		      <?php } ?>
+</select>

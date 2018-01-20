@@ -1,0 +1,23 @@
+﻿<h1>Listagem de Genero de Jogos</h1>
+<div class="form-group">
+	<a href="<?php echo $this->baseUrl('genero/formulario'); ?>" class="btn btn-default">Inserir</a>
+</div>
+<table border="1" width="100%" class="table table-inverse">
+	<thead>
+		<tr>
+			<th>Ações</th>
+			<th>Nome</th>
+		</tr>
+	</thead>
+	<?php foreach($this->rowSet as $row){ ?>
+	<tbody>
+		<tr>
+			<td class="col-md-3">
+				<a href="<?php echo $this->baseUrl('genero/formulario/id_genero/' . $row['id_genero']); ?>" class="btn btn-primary" wid>Alterar</a>
+				<a href="<?php echo $this->baseUrl('genero/excluir/id_genero/' . $row['id_genero']); ?>"class="btn btn-danger" >Excluir</a>
+			</td>
+			<td class="col-md-9"><?php echo $row['nome_genero']; ?></td>
+		</tr>
+	</tbody>
+	<?php } ?>
+</table>

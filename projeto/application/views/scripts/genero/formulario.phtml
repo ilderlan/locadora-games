@@ -1,0 +1,15 @@
+<h1>Cadastro de Genero</h1>
+
+<form action="<?php echo $this->baseUrl('genero/gravar'); ?>" method="post" enctype="multipart/form-data">
+	<input type="hidden" name="id_genero" value="<?php echo $this->row['id_genero']; ?>" />
+	
+	<div class="form-group">
+	    <label for="nome_genero">Nome</label>
+	    <input type="text" class="form-control" id="nome_genero" name="nome_genero" value="<?php echo $this->row['nome_genero']; ?>">
+	</div>
+	
+	<div class="text-center">
+		<input type="submit" value="Enviar" class="btn btn-success" />
+		<a href="<?php echo $this->baseUrl('genero/index'); ?>" class="btn btn-danger" >Voltar</a>
+	</div>
+</form>

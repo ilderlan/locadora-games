@@ -1,0 +1,62 @@
+<h1>Cadastro de Locação</h1>
+
+<form action="<?php echo $this->baseUrl('locacao/gravar'); ?>" method="post" enctype="multipart/form-data">
+	<input type="hidden" name="id_locacao" value="<?php echo $this->row['id_locacao']; ?>" />
+	
+	<div class="form-group">
+	    <label for="cliente">Cliente</label>
+    	<select class="form-control" id="id_cliente" name="id_cliente">
+    		<option value="">Selecione</option>
+    		<?php foreach($this->rowSetCliente as $rowCliente){ ?>
+    			<option <?php echo $this->row['id_cliente'] == $rowCliente['id_cliente'] ? 'selected="selected"' : ''; ?> value="<?php echo $rowCliente['id_cliente']; ?>"><?php echo $rowCliente['nome_cliente']; ?></option>
+    		<?php } ?>
+    	</select>
+	</div>
+    
+    <div class="form-group">
+	    <label for="console">Console</label>
+    	<select class="form-control" id="id_console" name="id_console">
+    		<option value="">Selecione</option>
+    		<?php foreach($this->rowSetConsole as $rowConsole){ ?>
+    			<option <?php echo $this->row['id_console'] == $rowConsole['id_console'] ? 'selected="selected"' : ''; ?> value="<?php echo $rowConsole['id_console']; ?>"><?php echo $rowConsole['nome_console']; ?></option>
+    		<?php } ?>
+    	</select>
+	</div>
+    
+    <div class="form-group">
+	    <label for="game">Game</label>
+        <div id="div_game">        
+    	   <select class="form-control" id="id_game" name="id_game">
+    		  <option value="">Selecione</option>
+    		      <?php foreach($this->rowSetGame as $rowGame){ ?>
+                <option <?php echo $this->row['id_game'] == $rowGame['id_game'] ? 'selected="selected"' : ''; ?> value="<?php echo $rowGame['id_game']; ?>"><?php echo $rowGame['nome_game']; ?></option>
+    		      <?php } ?>
+    	   </select>
+        </div>
+	</div>
+		
+	<div class="form-group">
+	    <label for="valor">Valor da Locação</label>
+	    <input type="text" class="form-control" id="valor" name="valor" value="<?php echo $this->row['valor']; ?>">
+	</div>
+	
+	<div class="form-group">
+	    <label for="dt_devolucao">Data da Devolução</label>
+	    <input type="date" class="form-control" id="dt_devolucao" name="dt_devolucao" value="<?php echo $this->row['dt_devolucao']; ?>" >
+	</div>
+	
+	<div class="text-center">
+		<input type="submit" value="Enviar" class="btn btn-success" />
+		<a href="<?php echo $this->baseUrl('locacao/index'); ?>" class="btn btn-danger" >Voltar</a>
+	</div>
+	
+</form>
+
+<script>
+    $(function(){  
+          
+        $('#id_console').change(function(){
+            $('#div_game').load('<?php echo $this->baseUrl('locacao/carregar-game/id_console/'); ?>'+ $('#id_console').val());
+        });
+    });
+</script>
